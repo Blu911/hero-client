@@ -21,15 +21,20 @@ export class HeroesComponent implements OnInit {
     if (!name) {
       return;
     }
-    this.heroService.addHero({name} as Hero)
-      .subscribe(hero => {
-        this.heroes.push(hero);
-      });
+    const heroes1 = this.heroes.filter(o => o.name === name);
+    if (heroes1.pop() === undefined ) {
+      this.heroService.addHero({name} as Hero)
+        .subscribe(hero => {
+          this.heroes.push(hero);
+        });
+    }
+    return;
   }
 
   delete(hero: Hero): void {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
+    return;
   }
 
   constructor(private heroService: HeroService) {
