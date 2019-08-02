@@ -1,11 +1,15 @@
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details </h2>
-  <div><span>id: </span>{{hero.id}}</div>
+  <div><span>Id: </span>{{hero.id}}</div>
   <div>
-    <label>name:
+    <label>Name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
+  <div><span>Hit Points: </span>{{hero.hitPoints.toFixed()}}</div>
+  <div><span>Mana Points: </span>{{hero.manaPoints.toFixed()}}</div>
+  <div><span>Power: </span>{{hero.power.name}}</div>
+  <div><span>Power description: </span>{{hero.power.description}}</div>
 </div>
 <button (click)="save()">save</button>
 <button (click)="goBack()">go back</button>
